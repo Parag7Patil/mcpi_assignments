@@ -352,9 +352,9 @@ static inline void DelayMs(volatile uint32_t ms) {
  800039c:	10624dd3 	.word	0x10624dd3
 
 080003a0 <main>:
-	return 0;
-}
 */
+
+ //Q.1 anticlockwise and clockwise led blinking.
 
 int main(void)
 {

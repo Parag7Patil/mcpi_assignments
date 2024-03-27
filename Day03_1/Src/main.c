@@ -40,6 +40,8 @@ int main(void)
 }
 */
 
+ //Q.1 anticlockwise and clockwise led blinking.
+
 int main(void)
 {
 	SystemInit();
