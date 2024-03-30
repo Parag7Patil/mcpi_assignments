@@ -24,7 +24,7 @@ void LedInit(uint32_t pin) {
 
 void LedOn(uint32_t pin) {
 	// set led pin (in ODR)
-	LED_GPIO->ODR |= BV(pin);
+	LED_GPIO->ODR |= BV(p              in);
 }
 
 void LedOff(uint32_t pin) {
