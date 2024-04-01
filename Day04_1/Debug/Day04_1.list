@@ -7,19 +7,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         00000460  08000188  08000188  00001188  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000018  080005e8  080005e8  000015e8  2**2
+  2 .rodata       00000014  080005e8  080005e8  000015e8  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08000600  08000600  00002004  2**0
+  3 .ARM.extab    00000000  080005fc  080005fc  00002004  2**0
                   CONTENTS
-  4 .ARM          00000000  08000600  08000600  00002004  2**0
+  4 .ARM          00000000  080005fc  080005fc  00002004  2**0
                   CONTENTS
-  5 .preinit_array 00000000  08000600  08000600  00002004  2**0
+  5 .preinit_array 00000000  080005fc  080005fc  00002004  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08000600  08000600  00001600  2**2
+  6 .init_array   00000004  080005fc  080005fc  000015fc  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  08000604  08000604  00001604  2**2
+  7 .fini_array   00000004  08000600  08000600  00001600  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         00000004  20000000  08000608  00002000  2**2
+  8 .data         00000004  20000000  08000604  00002000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   9 .ccmram       00000000  10000000  10000000  00002004  2**0
                   CONTENTS
@@ -522,7 +522,7 @@ int main(void)
  8000494:	f000 f818 	bl	80004c8 <SystemInit>
 	LcdInit();
  8000498:	f7ff ff3c 	bl	8000314 <LcdInit>
-	LcdPuts(LCD_LINE1, "JAY SHREE");
+	LcdPuts(LCD_LINE1, "We can");
  800049c:	4908      	ldr	r1, [pc, #32]	@ (80004c0 <main+0x30>)
  800049e:	2080      	movs	r0, #128	@ 0x80
  80004a0:	f7ff ffaa 	bl	80003f8 <LcdPuts>
@@ -543,7 +543,7 @@ int main(void)
  80004bc:	bf00      	nop
  80004be:	e7f5      	b.n	80004ac <main+0x1c>
  80004c0:	080005e8 	.word	0x080005e8
- 80004c4:	080005f4 	.word	0x080005f4
+ 80004c4:	080005f0 	.word	0x080005f0
 
 080004c8 <SystemInit>:
   *         configuration.
@@ -717,7 +717,7 @@ LoopForever:
   ldr r1, =_edata
  8000574:	20000004 	.word	0x20000004
   ldr r2, =_sidata
- 8000578:	08000608 	.word	0x08000608
+ 8000578:	08000604 	.word	0x08000604
   ldr r2, =_sbss
  800057c:	20000004 	.word	0x20000004
   ldr r4, =_ebss
@@ -759,10 +759,10 @@ Infinite_Loop:
  80005ba:	4798      	blx	r3
  80005bc:	3601      	adds	r6, #1
  80005be:	e7f2      	b.n	80005a6 <__libc_init_array+0x1e>
- 80005c0:	08000600 	.word	0x08000600
- 80005c4:	08000600 	.word	0x08000600
- 80005c8:	08000600 	.word	0x08000600
- 80005cc:	08000604 	.word	0x08000604
+ 80005c0:	080005fc 	.word	0x080005fc
+ 80005c4:	080005fc 	.word	0x080005fc
+ 80005c8:	080005fc 	.word	0x080005fc
+ 80005cc:	08000600 	.word	0x08000600
 
 080005d0 <_init>:
  80005d0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}

@@ -1,10 +1,34 @@
-22:06:34 **** Incremental Build of configuration Debug for project Day03_1 ****
+18:13:36 **** Build of configuration Debug for project Day03_1 ****
 make -j8 all 
-arm-none-eabi-size  Day03_1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1344	      4	   1564	   2912	    b60	Day03_1.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Src/led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/led.d" -MT"Src/led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/led.o"
+In file included from ../Src/led.c:9:
+../Src/led.c: In function 'LedOn':
+../Src/led.c:27:29: error: 'p' undeclared (first use in this function)
+   27 |         LED_GPIO->ODR |= BV(p              in);
+      |                             ^
+../Inc/stm32f4xx.h:228:26: note: in definition of macro 'BV'
+  228 | #define BV(n)     (1 << (n))
+      |                          ^
+../Src/led.c:27:29: note: each undeclared identifier is reported only once for each function it appears in
+   27 |         LED_GPIO->ODR |= BV(p              in);
+      |                             ^
+../Inc/stm32f4xx.h:228:26: note: in definition of macro 'BV'
+  228 | #define BV(n)     (1 << (n))
+      |                          ^
+../Src/led.c:27:44: error: expected ')' before 'in'
+   27 |         LED_GPIO->ODR |= BV(p              in);
+      |                                            ^~
+../Inc/stm32f4xx.h:228:26: note: in definition of macro 'BV'
+  228 | #define BV(n)     (1 << (n))
+      |                          ^
+../Inc/stm32f4xx.h:228:25: note: to match this '('
+  228 | #define BV(n)     (1 << (n))
+      |                         ^
+../Src/led.c:27:26: note: in expansion of macro 'BV'
+   27 |         LED_GPIO->ODR |= BV(p              in);
+      |                          ^~
+make: *** [Src/subdir.mk:34: Src/led.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-22:06:34 Build Finished. 0 errors, 0 warnings. (took 115ms)
+18:13:36 Build Failed. 3 errors, 0 warnings. (took 285ms)
 
