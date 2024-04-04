@@ -1,2 +1,6 @@
 1711974438574	Delete resource 'Day7_1/Inc/uart.h'
 1711974459173	Delete resource 'Day7_1/Src/uart.c'
+1712053294815	Delete resource 'Day8_1/Inc/eeprom.h'
+1712053299950	Delete resource 'Day8_1/Inc/i2c.h'
+1712056699139	Delete resource 'Day8_1/Src/i2c.c'
+1712056726773	Delete resource 'Day8_1/Src/eeprom.c'

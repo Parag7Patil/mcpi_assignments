@@ -1,0 +1,10 @@
+18:36:29 **** Incremental Build of configuration Debug for project demo11_spi_accel ****
+make -j8 all 
+arm-none-eabi-size  demo11_spi_accel.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4796	     84	   1900	   6780	   1a7c	demo11_spi_accel.elf
+Finished building: default.size.stdout
+ 
+
+18:36:29 Build Finished. 0 errors, 0 warnings. (took 171ms)
+

@@ -1,0 +1,47 @@
+/*
+ * eeprom.c
+ *
+ *  Created on: Apr 2, 2024
+ *      Author: parag
+ */
+
+#include "eeprom.h"
+
+void EEPROM_Init()
+{
+
+}
+
+void EEPROM_WRITE(uint16_t adrr,uint8_t byte[],uint8_t n)
+{
+	uint8_t high = adrr >> 8,low=addr & 0xFF;
+	I2CStart();
+	I2CSendSlaveAddress(EEPROM_W);
+	I2CSendData(high);
+	I2CSendData(low);
+	for(int i=0;i<n;i++)
+	{
+		I2CSendData(byte[i]);
+		I2CStop();
+	}
+
+}
+
+void EEPROM_READ(uint16_t addr,uint8_t byte[],uint8_t n)
+{
+	uint8_t high = addr>> 8,low = addr & 0xFF;
+	I2CStart();
+	I2CSendSlaveAddress(EEPROM_W);
+	I2CSendData(high);
+	I2CSendData(low);
+	I2CRepeatstart();
+	I2CSendSlaveAdrres();
+	for(int i=0;i<n;i++)
+	{
+		byte[i] = I2CRecvDataAck();
+		byte[i] = I2CRecvDataAck();
+		I2CStop();
+
+	}
+
+}
