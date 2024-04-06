@@ -21,5 +21,6 @@ int SwitchGetState(uint32_t pin);
 
 extern volatile int exti0_flag;
 
+
 #endif /* SWITCH_H_ */
 
