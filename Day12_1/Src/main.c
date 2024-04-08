@@ -18,11 +18,13 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 #include "stm32f4xx.h"
 #include "system_stm32f4xx.h"
-#include "eeprom.h"
-#include "uart.h"
+#include "adc.h"
 #include "i2c.h"
+#include "lcd.h"
+#include "switch.h"
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
@@ -30,40 +32,23 @@
 
 int main(void)
 {
-	int a;
 	char str[32];
-	char str2[32];
+	uint16_t val;
 	SystemInit();
-	EEPROM_Init();
-	UartInit(BAUD_9600);
-	while(1)
-	{
-		UartPuts("1. Write data\r\n");
-		UartPuts("2. read data\r\n");
-		UartGets(str);
-		sscanf(str,"%d",&a);
-		switch(a)
-		{
-			case 1:
-					UartGets(str2);
-			EEPROM_Write(0x0000, (uint8_t*)str2,strlen(str2)+1);           
-					break;
+	ADC_Init();
+	SwitchInit(SWITCH);
+	val=LcdInit();
+		while(1) {
 
-			case 2:
-					EEPROM_Read(0x0000,(uint8_t*)str2,32);
-					UartPuts(str2);
-					break;
-		}
+					while(SwitchGetState(SWITCH) == 0){}
+						;
+
+		             //if(ret) {
+		             	//	LcdPuts(LCD_LINE1, "!DESD @ SUNBEAM!");
+		val = ADC_GetValue();
+		sprintf(str, "ADC=%d\r\n", val);
+		LcdPuts(LCD_LINE1,str);
+		DelayMs(1000);
 	}
-	//EEPROM_Write(0x0020, (uint8_t*)"GOD BLESS YOU!\r\n", 16);
 	return 0;
 }
-
-
-
-
-
-
-
-
-
